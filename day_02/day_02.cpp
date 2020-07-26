@@ -17,15 +17,6 @@ const vector<vector<char>> actual_keypad{{null, null, '1', null, null},
                                          {null, 'A', 'B', 'C', null},
                                          {null, null, 'D', null, null}};
 
-void read_from_file(const string& f_name, vector<string>& v) {
-    ifstream ifs{f_name};
-    if (!ifs)
-        throw runtime_error("Can't open file: " + f_name);
-
-    for (string s; ifs >> s;)
-        v.push_back(s);
-}
-
 pair<char, coords> decode_instruction(const string& instruction,
                                       const vector<vector<char>>& keypad,
                                       coords curr_pos) {
@@ -51,9 +42,9 @@ pair<char, coords> decode_instruction(const string& instruction,
 int main(int argc, char** argv) try {
     vector<string> instructions;
     if (argc == 2)
-        read_from_file(argv[1], instructions);
+        read_to_vecstr(argv[1], instructions);
     else
-        read_from_file(f_name, instructions);
+        read_to_vecstr(f_name, instructions);
     pair<int, int> curr_pos;
     string pw;
     char next_char;

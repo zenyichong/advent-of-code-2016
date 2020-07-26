@@ -7,15 +7,6 @@ using letter_count = pair<char, int>;
 
 const string f_name = "day_04.txt";
 
-void read_from_file(const string& f_name, vector<string>& v) {
-    ifstream ifs{f_name};
-    if (!ifs)
-        throw runtime_error("Can't open file: " + f_name);
-
-    for (string s; ifs >> s;)
-        v.push_back(s);
-}
-
 bool is_valid_room(const string& name, const string& checksum) {
     map<char, int> letter_map;
     for (char ch : name) {
@@ -59,9 +50,9 @@ string caesar_cipher(string name, int shift_amt) {
 int main(int argc, char** argv) try {
     vector<string> rooms;
     if (argc == 2)
-        read_from_file(argv[1], rooms);
+        read_to_vecstr(argv[1], rooms);
     else
-        read_from_file(f_name, rooms);
+        read_to_vecstr(f_name, rooms);
     int sector_id_sum;
     regex pattern{R"(([a-z\-]+)(\d+)\[([a-z]+)\])"};
     vector<string> valid_rooms;
@@ -71,7 +62,7 @@ int main(int argc, char** argv) try {
     for (string s : rooms) {
         smatch matches;
         if (!regex_match(s, matches, pattern))
-            throw runtime_error("Bad string: " + s);
+            error("Bad string: ", s);
 
         string name = matches[1];
         int sector_id = stoi(matches[2]);
@@ -89,7 +80,7 @@ int main(int argc, char** argv) try {
     for (string s : valid_rooms) {
         smatch matches;
         if (!regex_match(s, matches, pattern))
-            throw runtime_error("Bad string: " + s);
+            error("Bad string: ", s);
 
         string name = matches[1];
         int sector_id = stoi(matches[2]);

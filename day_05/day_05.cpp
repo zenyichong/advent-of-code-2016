@@ -9,10 +9,7 @@ const string f_name = "day_05.txt";
 
 int main(int argc, char** argv) try {
     string door_id;
-    ifstream ifs{f_name};
-    if (!ifs)
-        throw runtime_error("Can't open file: " + f_name);
-    ifs >> door_id;
+    read_to_str(f_name, door_id);
 
     string pw1 = "";
     string pw2 = "________";

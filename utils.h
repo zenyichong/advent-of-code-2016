@@ -36,4 +36,12 @@ void read_to_vecstr(const string& f_name, vector<string>& v,
     }
 }
 
+void read_to_str(const string& f_name, string& s) {
+    std::ifstream ifs{f_name};
+    if (!ifs)
+        error("Can't open file:", f_name);
+
+    ifs >> s;
+}
+
 int absmod(int a, int b) { return (a % b + b) % b; }

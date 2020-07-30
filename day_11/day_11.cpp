@@ -1,7 +1,5 @@
 // --- Advent of Code 2016 Day 11: Radioisotope Thermoelectric Generators ---
 
-#include <queue>
-
 #include "../utils.h"
 
 using namespace std;
@@ -10,10 +8,12 @@ const string f_name = "day_11.txt";
 
 using Arrangement = vector<vector<string>>;
 using State = tuple<int, int, Arrangement>;
+
 const vector<vector<string>> initial_state_p1{
     {"SG", "SM", "PG", "PM"}, {"TG", "RG", "RM", "CG", "CM"}, {"TM"}, {}};
 const vector<vector<string>> final_state_p1{
     {}, {}, {}, {"CG", "CM", "PG", "PM", "RG", "RM", "SG", "SM", "TG", "TM"}};
+
 const vector<vector<string>> initial_state_p2{
     {"SG", "SM", "PG", "PM", "EG", "EM", "DG", "DM"}, {"TG", "RG", "RM", "CG", "CM"}, {"TM"}, {}};
 const vector<vector<string>> final_state_p2{
@@ -73,10 +73,12 @@ pair<int, Arrangement> move_items(int direction, int elevator, const Arrangement
     Arrangement next_state = floors;
     next_state[elevator + direction].push_back(next_state[elevator][item_1]);
     next_state[elevator].erase(next_state[elevator].begin() + item_1);
+
     if (item_2 != INT32_MAX) {
         next_state[elevator + direction].push_back(next_state[elevator][item_2 - 1]);
         next_state[elevator].erase(next_state[elevator].begin() + item_2 - 1);
     }
+
     return {elevator + direction, next_state};
 }
 

@@ -30,8 +30,7 @@ size_t get_decompressed_len(const string& s, bool is_part_2) {
             tie(n_chars, cnt) = parse_marker(marker);
 
             if (is_part_2)
-                length +=
-                    cnt * get_decompressed_len(s.substr(i + 1, n_chars), true);
+                length += cnt * get_decompressed_len(s.substr(i + 1, n_chars), true);
             else
                 length += cnt * n_chars;
             i += n_chars + 1;

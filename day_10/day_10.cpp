@@ -44,8 +44,7 @@ map<string, pair<int, int>> init_bots(vector<string>& instructions) {
     return res;
 }
 
-bool update_chip_positions(map<string, pair<int, int>>& m,
-                           const string& instruction) {
+bool update_chip_positions(map<string, pair<int, int>>& m, const string& instruction) {
     static const regex cmp_regex{
         R"(([a-z0-9 ]+) gives low to ([a-z0-9 ]+) and high to ([a-z0-9 ]+))"};
     smatch match;
@@ -91,8 +90,7 @@ int main(int argc, char** argv) try {
     }
 
     // Part Two
-    int ans = chip_positions["output 0"].first *
-              chip_positions["output 1"].first *
+    int ans = chip_positions["output 0"].first * chip_positions["output 1"].first *
               chip_positions["output 2"].first;
     cout << "Part Two: " << ans << '\n';
 

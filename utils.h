@@ -4,6 +4,7 @@
 #include <iostream>
 #include <map>
 #include <numeric>
+#include <queue>
 #include <regex>
 #include <set>
 #include <stdexcept>
@@ -24,8 +25,7 @@ static inline void error(const string& s1, const string& s2) {
     throw std::runtime_error(s1 + s2);
 }
 
-void read_to_vecstr(const string& f_name, vector<string>& v,
-                    string chars_to_trim = "") {
+void read_to_vecstr(const string& f_name, vector<string>& v, string chars_to_trim = "") {
     std::ifstream ifs{f_name};
     if (!ifs)
         error("Can't open file: ", f_name);
@@ -44,4 +44,6 @@ void read_to_str(const string& f_name, string& s) {
     ifs >> s;
 }
 
-int absmod(int a, int b) { return (a % b + b) % b; }
+int absmod(int a, int b) {
+    return (a % b + b) % b;
+}

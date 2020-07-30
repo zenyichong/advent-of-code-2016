@@ -6,8 +6,7 @@ using namespace std;
 
 const string f_name = "day_03.txt";
 
-void read_from_file(const string& f_name, vector<vector<int>>& v1,
-                    vector<vector<int>>& v2) {
+void read_from_file(const string& f_name, vector<vector<int>>& v1, vector<vector<int>>& v2) {
     ifstream ifs{f_name};
     vector<int> tmp;
     if (!ifs)
@@ -21,8 +20,7 @@ void read_from_file(const string& f_name, vector<vector<int>>& v1,
 
     for (int i = 0; i < tmp.size(); i += 9) {
         for (int j = 0; j < 3; ++j) {
-            v2.push_back(vector<int>{tmp.at(i + j), tmp.at(i + j + 3),
-                                     tmp.at(i + j + 6)});
+            v2.push_back(vector<int>{tmp.at(i + j), tmp.at(i + j + 3), tmp.at(i + j + 6)});
         }
     }
 }

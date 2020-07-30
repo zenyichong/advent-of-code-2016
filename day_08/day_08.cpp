@@ -10,8 +10,7 @@ const string f_name = "day_08.txt";
 const int W = 50, H = 6;
 const char OFF = ' ', ON = '#';
 
-void print_screen(const valarray<char>& screen, const int nrows,
-                  const int ncols) {
+void print_screen(const valarray<char>& screen, int nrows, int ncols) {
     for (int i = 0; i < nrows; ++i) {
         for (int j = 0; j < ncols; ++j)
             cout << screen[i * ncols + j];
@@ -29,13 +28,11 @@ void parse_instruction(const string& instruction, valarray<char>& screen) {
 
     } else if (regex_match(instruction, match, rotate_col)) {
         size_t a{stoul(match[1])}, b{stoul(match[2])};
-        screen[slice(a, H, W)] =
-            valarray<char>(screen[slice(a, H, W)]).cshift(-b);
+        screen[slice(a, H, W)] = valarray<char>(screen[slice(a, H, W)]).cshift(-b);
 
     } else if (regex_match(instruction, match, rotate_row)) {
         size_t a{stoul(match[1])}, b{stoul(match[2])};
-        screen[slice(a * W, W, 1)] =
-            valarray<char>(screen[slice(a * W, W, 1)]).cshift(-b);
+        screen[slice(a * W, W, 1)] = valarray<char>(screen[slice(a * W, W, 1)]).cshift(-b);
     }
 }
 

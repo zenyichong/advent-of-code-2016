@@ -27,8 +27,7 @@ void read_from_file(const string& f_name, vector<string>& v) {
 }
 
 char update_heading(char dir, char ch) {
-    int idx =
-        find(directions.begin(), directions.end(), dir) - directions.begin();
+    int idx = find(directions.begin(), directions.end(), dir) - directions.begin();
     int n = directions.size();
     switch (ch) {
         case 'R':
@@ -63,8 +62,7 @@ Position update_position(Position pos, string instruction) {
     return pos;
 }
 
-pair<Position, bool> update_position_and_visited(Position pos,
-                                                 string instruction,
+pair<Position, bool> update_position_and_visited(Position pos, string instruction,
                                                  set<pair<int, int>>& visited) {
     char ch = instruction[0];
     int distance = stoi(instruction.substr(1));
@@ -112,8 +110,7 @@ int main() try {
     pos = {{0, 0}, 'N'};
     for (string s : instructions)
         pos = update_position(pos, s);
-    cout << "Part One: " << abs(pos.coords.first) + abs(pos.coords.second)
-         << '\n';
+    cout << "Part One: " << abs(pos.coords.first) + abs(pos.coords.second) << '\n';
 
     // Part Two
     pos = {{0, 0}, 'N'};
@@ -125,8 +122,7 @@ int main() try {
         if (found)
             break;
     }
-    cout << "Part Two: " << abs(pos.coords.first) + abs(pos.coords.second)
-         << '\n';
+    cout << "Part Two: " << abs(pos.coords.first) + abs(pos.coords.second) << '\n';
 
 } catch (runtime_error& e) {
     cerr << "Runtime error: " << e.what() << '\n';

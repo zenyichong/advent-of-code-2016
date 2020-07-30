@@ -21,9 +21,7 @@ bool is_valid_room(const string& name, const string& checksum) {
         letter_vec.push_back(elem);
     }
     stable_sort(letter_vec.begin(), letter_vec.end(),
-                [](const letter_count& a, const letter_count& b) {
-                    return a.second > b.second;
-                });
+                [](const letter_count& a, const letter_count& b) { return a.second > b.second; });
 
     for (int i = 0; i < checksum.size(); ++i) {
         if (checksum.at(i) != letter_vec.at(i).first)

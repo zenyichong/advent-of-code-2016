@@ -7,18 +7,17 @@ using coords = pair<int, int>;
 
 constexpr int null = '0';
 const string f_name = "day_02.txt";
-const map<char, coords> directions{
-    {'U', {0, -1}}, {'D', {0, 1}}, {'L', {-1, 0}}, {'R', {1, 0}}};
-const vector<vector<char>> keypad{
-    {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
+
+const map<char, coords> directions{{'U', {0, -1}}, {'D', {0, 1}}, {'L', {-1, 0}}, {'R', {1, 0}}};
+
+const vector<vector<char>> keypad{{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 const vector<vector<char>> actual_keypad{{null, null, '1', null, null},
                                          {null, '2', '3', '4', null},
                                          {'5', '6', '7', '8', '9'},
                                          {null, 'A', 'B', 'C', null},
                                          {null, null, 'D', null, null}};
 
-pair<char, coords> decode_instruction(const string& instruction,
-                                      const vector<vector<char>>& keypad,
+pair<char, coords> decode_instruction(const string& instruction, const vector<vector<char>>& keypad,
                                       coords curr_pos) {
     int x, y;
     tie(x, y) = curr_pos;
@@ -62,8 +61,7 @@ int main(int argc, char** argv) try {
     curr_pos = {0, 2};
     pw = "";
     for (string s : instructions) {
-        tie(next_char, curr_pos) =
-            decode_instruction(s, actual_keypad, curr_pos);
+        tie(next_char, curr_pos) = decode_instruction(s, actual_keypad, curr_pos);
         pw += next_char;
     }
     cout << "Part Two: " << pw << '\n';
